@@ -5,12 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.rebwon.basicauth.web.AuthController;
 import com.rebwon.basicauth.web.payload.SignInPayload;
 import com.rebwon.basicauth.web.payload.SignUpPayload;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockHttpSession;
 
+@Disabled
 @SpringBootTest
 class LoggingAspectTest {
 
@@ -22,9 +24,5 @@ class LoggingAspectTest {
   void logging() {
     SignUpPayload payload = new SignUpPayload("kitty@gmail.com", "123456789", "kitty");
     authController.register(payload);
-
-    MockHttpSession session = new MockHttpSession();
-    SignInPayload signInPayload = new SignInPayload("kitty@gmail.com", "123456789");
-    authController.login(signInPayload, session);
   }
 }

@@ -1,6 +1,11 @@
 package com.rebwon.basicauth.domain;
 
+import java.util.Set;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +25,9 @@ public class Account {
   private String email;
   private String password;
   private String nickname;
+  @ElementCollection(fetch = FetchType.EAGER)
+  @Enumerated(EnumType.STRING)
+  private Set<AccountRole> roles;
 
   public boolean isGuest() {
     return false;
@@ -33,6 +41,10 @@ public class Account {
 
   public boolean matchPassword(String password) {
     return this.password.equals(password);
+  }
+
+  public enum AccountRole {
+    ADMIN, USER
   }
 
   private static class GuestAccount extends Account {

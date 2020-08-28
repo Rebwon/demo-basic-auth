@@ -7,7 +7,7 @@
     </layout>
   </appender>
 
-  <logger name="net.slipp" level="DEBUG" />
+  <logger name="com.rebwon" level="DEBUG" />
 
   <root>
     <appender-ref ref="STDOUT" />
