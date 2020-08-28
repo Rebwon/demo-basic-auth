@@ -1,0 +1,1 @@
+insert into account (email, password, nickname) values ('rebwon@gmail.com', '123456789', 'rebwon');
